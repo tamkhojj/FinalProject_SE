@@ -1,0 +1,30 @@
+﻿@model IEnumerable<FinalProject_SE.Models.ShoppingCartItem>
+@using FinalProject_SE.Common
+
+@if (Model != null && Model.Any())
+{
+    <h3>SHOPPING CART <span style="float:right;position:relative"><small>@Model.Count()</small></span></h3>
+    var total = decimal.Zero;
+    <div style="border:1px solid #808080;">
+        <table class="table">
+            @foreach (var item in Model)
+            {
+                total += item.TotalPrice;
+                <tr>
+                    <td>@item.ProductName</td>
+                    <td>@Common.FormatNumber(item.Price, 0)</td>
+                </tr>
+            }
+            <tr>
+                <td>Total</td>
+                <td>@Common.FormatNumber(total, 0)</td>
+            </tr>
+        </table>
+    </div>
+
+}
+else
+{
+
+}
+
